@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+#boards > a {
+	margin-top: 20px;
+	border: 1px solid red;
+	text-align: center;
+	border-radius: 4px 4px;
+}

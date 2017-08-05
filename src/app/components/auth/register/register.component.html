@@ -1,0 +1,11 @@
+<div class="col-md-6">
+  <h3>Create A New Account</h3>
+  <form (submit)="register(f)" #f>
+    <div class="form-group">
+      <input class="form-control" type="text" name="name" placeholder="Username" required>
+      <input class="form-control" type="password" name="password" placeholder="Password" required>
+      <input class="form-control" type="password" name="password_confirmation" placeholder="Verify Password" required>
+    </div>
+    <button type="submit" class="btn btn-danger">Register</button>
+  </form>
+</div>
