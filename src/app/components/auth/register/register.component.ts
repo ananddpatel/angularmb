@@ -9,18 +9,18 @@ import { AuthService } from "../../../services/auth.service";
 })
 export class RegisterComponent implements OnInit {
 
+  message: string;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
   register(form: NgForm) {
-    const myForm = form
-    console.log(myForm);
-    // return false;
-    this.authService.register(form.value.name, form.value.password, form.value.password_confirmation)
-      .subscribe(res=>console.log(res), err => console.log(err));
-
+    this.authService.register(form.value.username, form.value.password, form.value.password_confirmation)
+      .subscribe( // sub to an observable
+        res=>{console.log('user registered')},
+        err =>this.message = "Invalid Username/Password"
+      );
   }
-
 }

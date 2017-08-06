@@ -1,11 +1,15 @@
 <div class="col-md-6">
+  <div *ngIf="errMessage" class="alert alert-warning">
+    <div class="text-center">{{errMessage}}</div>
+  </div>
+
   <h3>Create A New Account</h3>
-  <form (submit)="register(f)" #f>
+  <form (ngSubmit)="register(f)" #f="ngForm">
     <div class="form-group">
-      <input class="form-control" type="text" name="name" placeholder="Username" required>
-      <input class="form-control" type="password" name="password" placeholder="Password" required>
-      <input class="form-control" type="password" name="password_confirmation" placeholder="Verify Password" required>
+      <input class="form-control" type="text" name="username" placeholder="Username" ngModel required>
+      <input class="form-control" type="password" name="password" placeholder="Password" ngModel required>
+      <input class="form-control" type="password" name="password_confirmation" placeholder="Verify Password" ngModel required>
     </div>
-    <button type="submit" class="btn btn-danger">Register</button>
+    <input type="submit" value="Register" class="btn btn-danger">
   </form>
 </div>
