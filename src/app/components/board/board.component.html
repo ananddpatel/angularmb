@@ -1,38 +1,19 @@
 <div class="section card">
-  <h2 class="text-center">
-    {{board}} <button class="btn btn-danger btn-xs">Create Post</button>
+  <h2 class="text-center board-name">
+    {{board}} <a class="btn btn-danger btn-xs" routerLink="{{createPostRoute}}">Create Post</a>
   </h2>
-  
 
   <div class="posts">
     <hr>
-    <div class="post">
-      <h4 class="text-danger">Post title
-        <small>by: arya</small>
-      </h4>
-      <hr>
-    </div>
+     <div *ngIf="posts"> 
+      <div class="post" *ngFor="let post of posts">
+        <h4 class="text-danger">{{post.title}}
+          <small>by: {{post.user_id}}</small>
+        </h4>
+        <hr>
+      </div>
+     </div> 
 
-    <div class="post">
-      <h4 class="text-danger">Post title
-        <small>by: arya</small>
-      </h4>
-      <hr>
-    </div>
-
-    <div class="post">
-      <h4 class="text-danger">Post title
-        <small>by: arya</small>
-      </h4>
-      <hr>
-    </div>
-
-    <div class="post">
-      <h4 class="text-danger">Post title
-        <small>by: arya</small>
-      </h4>
-      <hr>
-    </div>
   </div>
 
 </div>
