@@ -12,6 +12,7 @@ import { AuthService } from "../../services/auth.service";
 export class BoardComponent implements OnInit {
 
   board: string;
+  author: string;
   createPostRoute: string;
   posts;
 
@@ -25,20 +26,33 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(res => this.board = res.board);
     this.getPosts()
-    this.setPostRoute()
+    this.setPostCreateRoute()
   }
 
   getPosts() : void {
     this.data.getPosts(this.board)
       // .subscribe(res => this.posts = res.data.posts, err=>console.log('board.component', err))
       .subscribe(
-        res => this.posts = res.data.posts,
+        res => {this.posts = res.data.posts, this.author = res.data.board.user_id},
         err=> this.router.navigate(['/404'])
       )
   }
 
-  setPostRoute() : void {
+  setPostCreateRoute() : void {
     this.createPostRoute = this.auth.getUser() ? '/b/'+this.board+'/create' : '/auth'
   }
+
+  formatPostDate(date: string) {
+    let d = new Date(date)
+    return d.toLocaleString('en-US', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric'
+    })
+  }
+
+
 
 }
