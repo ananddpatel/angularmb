@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title : string = 'AngularMB';
+  apiRoute: string = 'https://ng-mb-backend.herokuapp.com/api';
 }

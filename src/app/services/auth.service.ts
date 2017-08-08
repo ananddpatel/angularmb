@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Http } from "@angular/http";
+import { AppComponent } from '../app.component'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
 @Injectable()
 export class AuthService {
   base: string;
+  private user: {id: number, name: string};
 
   constructor(private http: Http) {
-    this.base = 'http://localhost:8000/api';
+    this.base = new AppComponent().apiRoute;
+    this.user = localStorage.getItem('ngmb.user') ? JSON.parse(localStorage.getItem('ngmb.user')) : undefined;
   }
 
   register(username: string, password: string, passwordConfirmation: string) {
@@ -30,7 +33,12 @@ export class AuthService {
     // const generateTokenData = this.generateTokenData;
     return this.http.post(this.base + '/login', credentials)
       // decoded the base64 jwt
-      .map(res => {return this.generateTokenData(res.json().data.token)})
+      .map(res => {
+        const resJSON = res.json()
+        localStorage.setItem('ngmb.user', JSON.stringify(resJSON.data.user));
+        this.user = resJSON.data.user
+        return this.generateTokenData(resJSON.data.token)
+      })
       // token data object that we just returned from .map() and store it 
       .do(tokenData=>localStorage.setItem('ngmb', tokenData.token))
   }
@@ -44,6 +52,28 @@ export class AuthService {
       token: token,
       decoded: JSON.parse(window.atob(base64))
     }
+  }
+
+  checkTokenExpired() {
+    const tokenData = this.generateTokenData(this.getToken())
+    console.log(tokenData)
+    // checks time in seconds
+    if ((new Date).getTime() / 1000 >= tokenData.decoded.exp) {
+      this.logout()
+    }
+  }
+
+  logout() {
+    localStorage.clear();
+    this.user = undefined;
+  }
+
+  getUser() {
+    return this.user;
+  }
+
+  getToken() {
+    return localStorage.getItem('ngmb');
   }
 
 }
