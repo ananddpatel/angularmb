@@ -1,3 +1,12 @@
-<p>
-  create-post works!
-</p>
+<div class="section card">
+  <div class="container">
+    <h3 class="text-center">Submit to /b/{{board}}</h3>
+    <form (ngSubmit)="createPost(f)" #f="ngForm">
+      <div class="form-group">
+        <input name="title" type="text" class="form-control"  placeholder="Post Title..." ngModel required>
+        <textarea name="body" class="form-control" placeholder="Here can be your nice text" rows="5" ngModel></textarea>
+        <button class="btn btn-danger">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
