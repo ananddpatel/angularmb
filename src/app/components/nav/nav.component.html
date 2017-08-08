@@ -14,6 +14,7 @@
        <ul class="nav navbar-nav navbar-right">
         <li><a *ngIf="!auth.getUser()" routerLink="/auth">Login/Register</a></li>
         <li *ngIf="auth.getUser()" class="navbar-text">Hello, {{auth.getUser().name}}</li>
+        <li *ngIf="auth.getUser()"><a routerLink="/create">New Board</a></li>
         <li><a *ngIf="auth.getUser()" (click)="logout()" routerLink="/">Logout</a></li>
       </ul> 
     </div>

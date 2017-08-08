@@ -18,6 +18,7 @@ import { PostComponent } from './components/post/post.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
+import { CreateBoardComponent } from './components/create-board/create-board.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
     CommentComponent,
     NotfoundComponent,
     CreatePostComponent,
+    CreateBoardComponent,
   ],
   imports: [
     BrowserModule,

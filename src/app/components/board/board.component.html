@@ -6,9 +6,11 @@
   <div class="posts">
     <hr>
      <div *ngIf="posts"> 
-      <div class="post" *ngFor="let post of posts">
-        <h4 class="text-danger">{{post.title}}
-          <small>by: {{post.user_id}}</small>
+      <div class="post" *ngFor="let post of posts; let i = index">
+        <h4 class="text-danger">
+          {{i+1}}. {{post.title}}
+          <br>
+          <small>Created at: {{post.created_at}} | by: {{post.user_id}}</small>
         </h4>
         <hr>
       </div>

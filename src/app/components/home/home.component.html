@@ -24,7 +24,7 @@ Password: stark</code></pre>
         <a href="/b/testing" class="col-md-2">/b/laravel</a>
         <a href="/b/mysql" class="col-md-2">/b/mysql</a>
         <a href="/b/api" class="col-md-2">/b/api</a>
-        <div *ngIf="auth.getUser()" class="col-md-2"><button class="btn btn-danger">Create Board</button></div>
+        <div *ngIf="auth.getUser()" class="col-md-2"><a routerLink="/create" class="btn btn-danger">Create Board</a></div>
       </div>
 
       <div *ngIf="!auth.getUser()" class="row">

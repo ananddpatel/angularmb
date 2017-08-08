@@ -25,16 +25,20 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(res => this.board = res.board);
     this.getPosts()
-    this.createPostRoute = this.auth.getUser() ? '/b/'+this.board+'/create' : '/auth'
+    this.setPostRoute()
   }
 
-  getPosts() {
+  getPosts() : void {
     this.data.getPosts(this.board)
       // .subscribe(res => this.posts = res.data.posts, err=>console.log('board.component', err))
       .subscribe(
         res => this.posts = res.data.posts,
         err=> this.router.navigate(['/404'])
       )
+  }
+
+  setPostRoute() : void {
+    this.createPostRoute = this.auth.getUser() ? '/b/'+this.board+'/create' : '/auth'
   }
 
 }

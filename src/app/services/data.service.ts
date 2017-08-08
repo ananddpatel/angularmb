@@ -19,9 +19,15 @@ export class DataService {
   }
 
   createPost(board: string, title: string, body: string) {
-    const route = this.base + '/b/' + board + '/create' + '?token=' + this.auth.getToken();
+    let route = this.base + '/b/' + board + '/create' + '?token=' + this.auth.getToken();
     return this.http.post(route, {title: title, body: body})
       .map(res=>res.json())
+  }
+
+  createBoard(board: string) {
+    let route = this.base + '/create' + '?token=' + this.auth.getToken();
+    return this.http.post(route, {name: board})
+      .map(res=>res.json());
   }
 
 }
