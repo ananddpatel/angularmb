@@ -12,7 +12,7 @@
     </div>
     <div id="navbar" class="navbar-collapse" [ngClass]="{'collapse': collapsed}">
        <ul class="nav navbar-nav navbar-right">
-        <li><a *ngIf="!auth.getUser()" routerLink]="/auth">Login/Register</a></li>
+        <li><a *ngIf="!auth.getUser()" routerLink="/auth">Login/Register</a></li>
         <li *ngIf="auth.getUser()" class="navbar-text">Hello, {{auth.getUser().name}}</li>
         <li><a *ngIf="auth.getUser()" (click)="logout()" routerLink="/">Logout</a></li>
       </ul> 
