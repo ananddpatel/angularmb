@@ -16,6 +16,7 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { BoardComponent } from './components/board/board.component';
 import { PostComponent } from './components/post/post.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { CommentComponent } from './components/comment/comment.component';
     BoardComponent,
     PostComponent,
     CommentComponent,
+    NotfoundComponent,
   ],
   imports: [
     BrowserModule,
