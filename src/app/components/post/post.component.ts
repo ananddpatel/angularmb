@@ -38,7 +38,7 @@ export class PostComponent implements OnInit {
   	let comment = form.value.comment;
   	this.data.postComment(this.id, comment)
       .subscribe(res => {
-        console.log('Comment Posted', this.comments);
+        console.log('Comment Posted');
       })
   }
 

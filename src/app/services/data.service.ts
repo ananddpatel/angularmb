@@ -50,7 +50,7 @@ export class DataService {
   postComment(postId: string, comment: string) {
     let route = this.base + '/' + postId + '/comment' + '?token=' + this.auth.getToken();
     return this.http.post(route, {body: comment})
-      .map(res=> {return res.json()})
+      .map(res=> res.json())
   }
 
 
