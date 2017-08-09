@@ -2,7 +2,12 @@
   <div class="container row">
     <div class="col-md-8">
       <div class="text-center">
-        <h3>Decoupled Angular Frontend and Laravel Backend</h3>
+        <h3>
+          Decoupled Angular <a href="https://github.com/ananddpatel/angularmb">Frontend</a> and Laravel <a href="https://github.com/ananddpatel/angularmb-backend">Backend</a>
+          <br>
+        </h3>
+          <h4>Token Based Authentication</h4>
+        <hr>
         <h4><strong>Sample Accounts</strong></h4>
       </div>
 
@@ -19,11 +24,11 @@ Password: stark</code></pre>
       
         <h4 class="text-center"><strong>Boards</strong></h4>
       <div class="row" id="boards">
-        <a href="/b/board" class="col-md-2">/b/angular</a>
-        <a href="/b/test" class="col-md-2">/b/php</a>
-        <a href="/b/testing" class="col-md-2">/b/laravel</a>
-        <a href="/b/mysql" class="col-md-2">/b/mysql</a>
-        <a href="/b/api" class="col-md-2">/b/api</a>
+        <a routerLink="/b/funny" class="col-md-2">/b/funny</a>
+        <a routerLink="/b/tv" class="col-md-2">/b/tv</a>
+        <a routerLink="/b/news" class="col-md-2">/b/news</a>
+        <a routerLink="/b/movies" class="col-md-2">/b/movies</a>
+        <a routerLink="/b/games" class="col-md-2">/b/games</a>
         <div *ngIf="auth.getUser()" class="col-md-2"><a routerLink="/create" class="btn btn-danger">Create Board</a></div>
       </div>
 

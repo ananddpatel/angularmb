@@ -14,7 +14,7 @@
         <h4 class="text-danger">
           <a routerLink="/b/{{board}}/{{post.id}}">{{i+1}}. {{post.title}}</a>
           <br>
-          <small>Created at: {{data.formatDate(post.created_at)}} | by: <a class="user-link">{{post.author.name}}</a></small>
+          <small>Created {{data.formatDate(post.created_at)}} by: <a class="user-link">{{post.author.name}}</a></small>
         </h4>
         <hr>
       </div>
