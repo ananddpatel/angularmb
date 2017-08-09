@@ -15,7 +15,7 @@ const routes = [
   {path: 'b/:board', component: BoardComponent},
   {path: 'create', component: CreateBoardComponent},
   {path: 'b/:board/create', component: CreatePostComponent},
-  {path: 'b/:board/:postId', component: PostComponent},
+  {path: 'b/:board/:id', component: PostComponent},
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '404'}
 ];

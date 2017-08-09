@@ -30,4 +30,28 @@ export class DataService {
       .map(res=>res.json());
   }
 
+  formatDate(date: string) {
+    let d = new Date(date)
+    return d.toLocaleString('en-US', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric'
+    })
+  }
+
+  getPostData(postId: string) {
+    let route = this.base + '/b/board/'+postId;
+    return this.http.get(route)
+      .map(res=>res.json())
+  }
+
+  postComment(postId: string, comment: string) {
+    let route = this.base + '/' + postId + '/comment' + '?token=' + this.auth.getToken();
+    return this.http.post(route, {body: comment})
+      .map(res=> {return res.json()})
+  }
+
+
 }

@@ -33,7 +33,10 @@ export class BoardComponent implements OnInit {
     this.data.getPosts(this.board)
       // .subscribe(res => this.posts = res.data.posts, err=>console.log('board.component', err))
       .subscribe(
-        res => {this.posts = res.data.posts, this.author = res.data.board.user_id},
+        res => {
+          this.posts = res.data.posts
+          this.author = res.data.board.author.name
+        },
         err=> this.router.navigate(['/404'])
       )
   }
@@ -41,18 +44,5 @@ export class BoardComponent implements OnInit {
   setPostCreateRoute() : void {
     this.createPostRoute = this.auth.getUser() ? '/b/'+this.board+'/create' : '/auth'
   }
-
-  formatPostDate(date: string) {
-    let d = new Date(date)
-    return d.toLocaleString('en-US', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric'
-    })
-  }
-
-
 
 }
