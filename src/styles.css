@@ -13,3 +13,8 @@
 .board-name {
 	text-transform: capitalize;
 }
+
+a.user-link {
+	font-weight: bold;
+	color: #0084b8;
+}

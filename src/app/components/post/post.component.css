@@ -1,0 +1,16 @@
+form {
+	padding: 0px 20px;
+}
+
+.comment {
+	margin-bottom: 20px;
+}
+
+h3 {
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+
+p.body {
+	padding-top: 20px;
+}

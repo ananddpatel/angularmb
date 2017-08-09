@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './components/home/home.component';
 import { BoardComponent } from './components/board/board.component';
+import { PostComponent } from './components/post/post.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { CreateBoardComponent } from './components/create-board/create-board.component';
@@ -14,6 +15,7 @@ const routes = [
   {path: 'b/:board', component: BoardComponent},
   {path: 'create', component: CreateBoardComponent},
   {path: 'b/:board/create', component: CreatePostComponent},
+  {path: 'b/:board/:postId', component: PostComponent},
   {path: '404', component: NotfoundComponent},
   {path: '**', redirectTo: '404'}
 ];

@@ -12,7 +12,7 @@
      <div *ngIf="posts"> 
       <div class="post" *ngFor="let post of posts; let i = index">
         <h4 class="text-danger">
-          {{i+1}}. {{post.title}}
+          <a routerLink="/b/{{board}}/{{post.id}}">{{i+1}}. {{post.title}}</a>
           <br>
           <small>Created at: {{formatPostDate(post.created_at)}} | by: <a class="user-link">{{post.user_id}}</a></small>
         </h4>
