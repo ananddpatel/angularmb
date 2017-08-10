@@ -52,6 +52,4 @@ export class DataService {
     return this.http.post(route, {body: comment})
       .map(res=> res.json())
   }
-
-
 }

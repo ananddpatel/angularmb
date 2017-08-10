@@ -35,7 +35,6 @@ export class BoardComponent implements OnInit {
       .subscribe(
         res => {
           this.posts = res.data.posts
-          console.log(res.data)
           this.author = res.data.board.author.name
         },
         err=> this.router.navigate(['/404'])

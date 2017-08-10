@@ -32,7 +32,6 @@ export class PostComponent implements OnInit {
     this.data.getPostData(this.id)
       .subscribe(res => {
         this.post = res.data.post;
-        console.log(this.post)
         this.comments = res.data.comments
       })
   }
@@ -42,6 +41,7 @@ export class PostComponent implements OnInit {
     this.data.postComment(this.id, comment)
       .subscribe(res => {
         console.log('Comment Posted');
+        this.getPostData();
       })
   }
 
