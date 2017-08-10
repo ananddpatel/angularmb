@@ -11,7 +11,15 @@ export class AuthService {
 
   constructor(private http: Http) {
     this.base = new AppComponent().apiRoute;
-    this.user = localStorage.getItem('ngmb.user') ? JSON.parse(localStorage.getItem('ngmb.user')) : undefined;
+    this.checkReLoginReq()
+  }
+  
+  checkReLoginReq() {
+    if (localStorage.getItem('ngmb.user') && !this.checkTokenExpired(localStorage.getItem('ngmb'))) {
+      this.user = JSON.parse(localStorage.getItem('ngmb.user'));
+    } else {
+      this.logout()
+    }
   }
 
   register(username: string, password: string, passwordConfirmation: string) {
@@ -54,13 +62,10 @@ export class AuthService {
     }
   }
 
-  checkTokenExpired() {
-    const tokenData = this.generateTokenData(this.getToken())
-    console.log(tokenData)
+  checkTokenExpired(token: string) {
+    const tokenData = this.generateTokenData(token)
     // checks time in seconds
-    if ((new Date).getTime() / 1000 >= tokenData.decoded.exp) {
-      this.logout()
-    }
+    return (new Date).getTime() / 1000 >= tokenData.decoded.exp
   }
 
   logout() {
