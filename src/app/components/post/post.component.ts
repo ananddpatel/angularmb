@@ -16,27 +16,27 @@ export class PostComponent implements OnInit {
   comments: [any];
 
   constructor(
-  	private data: DataService,
-  	private route: ActivatedRoute,
-  	private auth: AuthService) { }
+    private data: DataService,
+    private route: ActivatedRoute,
+    private auth: AuthService) { }
 
   ngOnInit() {
-  	this.route.params.subscribe(res => this.id = res.id);
-  	this.getPostData()
+    this.route.params.subscribe(res => this.id = res.id);
+    this.getPostData()
   }
 
   getPostData() {
-  	this.data.getPostData(this.id)
-  	  .subscribe(res => {
-  	  	this.post = res.data.post;
-  	  	this.comments = res.data.comments
+    this.data.getPostData(this.id)
+      .subscribe(res => {
+        this.post = res.data.post;
+        this.comments = res.data.comments
         console.log(this.comments)
-  	  })
+      })
   }
 
   postComment(form: NgForm) {
-  	let comment = form.value.comment;
-  	this.data.postComment(this.id, comment)
+    let comment = form.value.comment;
+    this.data.postComment(this.id, comment)
       .subscribe(res => {
         console.log('Comment Posted');
       })

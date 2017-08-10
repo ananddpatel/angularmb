@@ -15,10 +15,10 @@ import { AuthComponent } from './components/auth/auth.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { BoardComponent } from './components/board/board.component';
 import { PostComponent } from './components/post/post.component';
-import { CommentComponent } from './components/comment/comment.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { CreatePostComponent } from './components/create-post/create-post.component';
 import { CreateBoardComponent } from './components/create-board/create-board.component';
+import { CommmentsComponent } from './components/commments/commments.component';
 
 
 @NgModule({
@@ -31,10 +31,10 @@ import { CreateBoardComponent } from './components/create-board/create-board.com
     RegisterComponent,
     BoardComponent,
     PostComponent,
-    CommentComponent,
     NotfoundComponent,
     CreatePostComponent,
     CreateBoardComponent,
+    CommmentsComponent,
   ],
   imports: [
     BrowserModule,

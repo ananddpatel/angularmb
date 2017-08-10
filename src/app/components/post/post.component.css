@@ -2,12 +2,8 @@ form {
 	padding: 0px 20px;
 }
 
-.post, .comments {
+.post {
 	padding: 10px 20px;
-}
-
-.comment {
-	padding: 10px 5px;
 }
 
 h3 {
