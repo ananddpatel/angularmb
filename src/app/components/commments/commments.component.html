@@ -1,7 +1,7 @@
-	<div *ngIf="comments" class="comments">
-		<div class="comment" *ngFor="let comment of comments">
-			<a class="user-link">{{comment.author.name}}</a> <small>{{data.formatDate(comment.created_at)}}</small>
-			<br>
-			{{comment.body}}
-		</div>
-	</div>
+<div *ngIf="comments" class="comments">
+  <div class="comment" *ngFor="let comment of comments">
+    <a class="user-link">{{comment.author.name}}</a> <small>{{data.formatDate(comment.created_at)}}</small>
+    <br>
+    {{comment.body}}
+  </div>
+</div>

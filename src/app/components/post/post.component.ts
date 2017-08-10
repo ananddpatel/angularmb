@@ -4,6 +4,9 @@ import { AuthService } from '../../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
+import { Post } from "../../models/Post";
+import { Comment } from "../../models/Comment";
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -12,8 +15,8 @@ import { NgForm } from '@angular/forms';
 export class PostComponent implements OnInit {
 
   id: string;
-  post;
-  comments: [any];
+  post: Post;
+  comments: Comment[];
 
   constructor(
     private data: DataService,
@@ -29,8 +32,8 @@ export class PostComponent implements OnInit {
     this.data.getPostData(this.id)
       .subscribe(res => {
         this.post = res.data.post;
+        console.log(this.post)
         this.comments = res.data.comments
-        console.log(this.comments)
       })
   }
 

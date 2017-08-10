@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { DataService } from "../../services/data.service";
 import { AuthService } from "../../services/auth.service";
+import { Post } from "../../models/Post";
 
 @Component({
   selector: 'app-board',
@@ -14,7 +15,7 @@ export class BoardComponent implements OnInit {
   board: string;
   author: string;
   createPostRoute: string;
-  posts;
+  posts: Post[];
 
   constructor(
     private route: ActivatedRoute,
@@ -31,10 +32,10 @@ export class BoardComponent implements OnInit {
 
   getPosts() : void {
     this.data.getPosts(this.board)
-      // .subscribe(res => this.posts = res.data.posts, err=>console.log('board.component', err))
       .subscribe(
         res => {
           this.posts = res.data.posts
+          console.log(res.data)
           this.author = res.data.board.author.name
         },
         err=> this.router.navigate(['/404'])
