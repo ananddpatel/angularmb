@@ -3,6 +3,7 @@ import { Http } from "@angular/http";
 import { AuthService } from "./auth.service";
 import { AppComponent } from '../app.component'
 import 'rxjs/add/operator/map';
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class DataService {
@@ -23,7 +24,7 @@ export class DataService {
     return this.http.post(route, {title: title, body: body})
       .map(res=>res.json())
   }
-
+    
   createBoard(board: string) {
     let route = this.base + '/create' + '?token=' + this.auth.getToken();
     return this.http.post(route, {name: board})

@@ -9,6 +9,7 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./create-board.component.css']
 })
 export class CreateBoardComponent implements OnInit {
+  message: string;
 
   constructor(
   	private data: DataService,
@@ -17,14 +18,23 @@ export class CreateBoardComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  validateBoardName(board: string) {
+    return board.split(' ').length === 1
+  }
 
   createBoard(form: NgForm) {
-  	let board = form.value.board
-  	this.data.createBoard(board)
-  	  .subscribe(res=>{
-  	  	console.log('create-board.component.ts @ createBoard', res)
-  	  	this.router.navigate(['/b/'+board])
-  	  })
+    let board = form.value.board
+    
+    if (!this.validateBoardName(board)) {
+      this.message = "Error: select a single word Board name or Board already exists."
+    } else {
+      this.data.createBoard(board)
+        .subscribe(
+          res=>this.router.navigate(['/b/'+board]),
+          err=>this.message = "Error: select a single word Board name or Board already exists."
+        )
+    }
   }
 
 }
