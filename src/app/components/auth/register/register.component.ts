@@ -10,6 +10,8 @@ import { AuthService } from "../../../services/auth.service";
 export class RegisterComponent implements OnInit {
 
   message: string;
+  registerSucc: boolean;
+
 
   constructor(private authService: AuthService) { }
 
@@ -19,7 +21,11 @@ export class RegisterComponent implements OnInit {
   register(form: NgForm) {
     this.authService.register(form.value.username, form.value.password, form.value.password_confirmation)
       .subscribe( // sub to an observable
-        res=>{console.log('user registered')},
+        res=>{
+          console.log('user registered');
+          this.registerSucc = true;
+          this.message = "Successfully registered"
+        },
         err =>this.message = "Invalid Username/Password"
       );
   }

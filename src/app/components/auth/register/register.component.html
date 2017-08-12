@@ -1,6 +1,6 @@
 <div class="col-md-6">
-  <div *ngIf="errMessage" class="alert alert-warning">
-    <div class="text-center">{{errMessage}}</div>
+  <div *ngIf="message" class="alert" [ngClass]="{'alert-danger': message && !registerSucc, 'alert-success': registerSucc}">
+    <div class="text-center">{{message}}</div>
   </div>
 
   <h3>Create A New Account</h3>
