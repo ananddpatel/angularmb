@@ -1,9 +1,12 @@
 <div class="col-md-6">
 
   <h3>Log In</h3>
-  
-  <div *ngIf="errMessage" class="alert alert-warning">
-    <div class="text-center">{{errMessage}}</div>
+  <div *ngIf="message" class="alert"
+       [ngClass]="{'alert-info': isLoggingIn, 'alert-danger': !isLoggingIn}">
+    <div class="text-center">
+      <i *ngIf="isLoggingIn" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+      {{message}}
+    </div>
   </div>
   
   <form id="loginForm" (ngSubmit)="login(f)" #f="ngForm">

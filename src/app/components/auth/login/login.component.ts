@@ -11,6 +11,7 @@ import { NgForm } from "@angular/forms";
 export class LoginComponent implements OnInit {
 
   message: string;
+  isLoggingIn: boolean;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -18,10 +19,19 @@ export class LoginComponent implements OnInit {
   }
 
   login(form: NgForm) {
+    this.isLoggingIn = true
+    this.message = "Logging in..."
     this.authService.login(form.value.username, form.value.password)
       .subscribe(
-        res=>{console.log('user logged in'); this.router.navigate(['/'])}, //res =  token data
-        err=>this.message = "Invalid Username and/or Password."
+        res=>{
+          this.isLoggingIn = false
+          // console.log('user logged in')
+          this.router.navigate(['/'])
+        }, //res =  token data
+        err=>{
+          this.message = "Invalid Username and/or Password."
+          this.isLoggingIn = false
+        }
       )
   }
 
